@@ -15,6 +15,10 @@ So I decided to build this little CLI that allows me to download and copy the au
 python tiptoi-dl.py
 ```
 
+You can enter any word thats in the title of a book, afterwards you get a list of possible matches.
+The script guides you through the rest of the steps and will download the .gme file automatically if the TipToi pen is connected via USB and mounted.
+Otherwise the .gme file is downloaded into your Downloads folder.
+
 ## Disclaimer
 
 tiptoi-dl is neither offered nor supported by Ravensburger.
