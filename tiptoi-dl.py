@@ -1,6 +1,9 @@
+#!/usr/bin/env python
+
 import re
 import sys
 import requests
+from urllib.parse import unquote
 from pathlib import Path
 import psutil
 from bs4 import BeautifulSoup
@@ -62,11 +65,14 @@ class TipToiDL:
         soup = BeautifulSoup(r.text, "html.parser")
         links = soup.find_all(
             "a",
-            href=re.compile("gme"),
+            href=re.compile("\.gme"),
         )
         subresults = []
         if len(links) == 1:
-            title = links[0].find_next("p").span.strong.string
+            try: 
+                title = links[0].find_next("p").span.strong.string
+            except:
+                title = links[0].find_next("p").strong.string
             print(f"  Download {title} audio file now")
             self.download(links[0].get("href"))
         else:
@@ -74,7 +80,11 @@ class TipToiDL:
             for n, link in enumerate(links, 1):
                 tr = link.parent.parent.find_next("tr")
                 td = tr.find_all("td")
-                title = td[n - 1].strong.string
+                title = "undefined"
+                try:
+                    title = td[n - 1].strong.string
+                except:
+                    pass
                 subresults.append({"title": title, "url": link.get("href")})
                 print(f"  [{n}] {title}")
             print("\n")
@@ -101,6 +111,7 @@ class TipToiDL:
     def download(self, url: str):
         print(f"  Download {url}")
         filename = url.split("/")[-1]
+        filename = unquote(filename).replace(" ", "_")
         disk = self.find_tiptoi_disk()
         if not disk:
             path = Path.home() / filename
