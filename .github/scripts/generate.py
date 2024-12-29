@@ -17,6 +17,7 @@ class TipToiCatalog:
         self.products = []
         self.get_catalog()
         for product in self.products:
+            print(f"Get data for {product['title']}")
             self.products.append(self.get_product_data(product))
         self.persist_products()
 
@@ -54,6 +55,7 @@ class TipToiCatalog:
         product_data = {}
 
         r = requests.get(product["url"])
+        print(f"Status code: {r.status_code}")
 
         soup = BeautifulSoup(r.text, "html.parser")
         links = soup.find_all(
