@@ -23,7 +23,7 @@ class TipToiCatalog:
         self.persist_products()
 
     def get_catalog(self):
-        r = requests.get(self.base_url)
+        r = requests.get(self.base_url, timeout=10)
         print(f"Status code: {r.status_code}")
         soup = BeautifulSoup(r.text, "html.parser")
         links = soup.find_all("a", class_="mt-listing-detailed-subpage-title")
@@ -55,7 +55,7 @@ class TipToiCatalog:
         print(f"Get product data for {product['title']}")
         product_data = {}
 
-        r = requests.get(product["url"])
+        r = requests.get(product["url"], timeout=10)
         print(f"Status code: {r.status_code}")
 
         soup = BeautifulSoup(r.text, "html.parser")
