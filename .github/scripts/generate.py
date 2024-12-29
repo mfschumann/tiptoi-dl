@@ -20,7 +20,7 @@ class TipToiCatalog:
         self.get_catalog()
         for n, product in enumerate(self.catalog):
             self.products.append(self.get_product_data(product))
-            time.sleep(1)
+            time.sleep(0.1)
         self.persist_products()
 
     def get_catalog(self):
