@@ -16,6 +16,7 @@ class TipToiCatalog:
         )
         self.catalog = []
         self.products = []
+        print("Start data scraping")
         self.get_catalog()
         for n, product in enumerate(self.catalog):
             self.products.append(self.get_product_data(product))
