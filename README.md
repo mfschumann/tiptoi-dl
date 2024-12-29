@@ -19,6 +19,8 @@ You can enter any word thats in the title of a book, afterwards you get a list o
 The script guides you through the rest of the steps and will download the .gme file automatically if the TipToi pen is connected via USB and mounted.
 Otherwise the .gme file is downloaded into your Downloads folder.
 
+![](https://github.com/Bouni/tiptoi-dl/blob/d73cdd2e0c5f3f5bb59584a734ea6f9805bd51bb/demo.gif)
+
 ## Disclaimer
 
 tiptoi-dl is neither offered nor supported by Ravensburger.
