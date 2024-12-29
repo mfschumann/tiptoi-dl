@@ -98,5 +98,8 @@ class TipToiDL:
             return None
 
 
-if __name__ == "__main__":
+def main():
     ttdl = TipToiDL()
+
+if __name__ == "__main__":
+    main()

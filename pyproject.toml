@@ -9,3 +9,6 @@ dependencies = [
     "requests>=2.32.3",
     "tqdm>=4.67.1",
 ]
+
+[project.scripts]
+tiptoi-dl = "tiptoidl:main"

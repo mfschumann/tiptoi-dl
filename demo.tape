@@ -8,7 +8,7 @@ Set Width 1200
 Set Theme "OneDark"
 Sleep 500ms
 
-Type "./tiptoi-dl.py"
+Type "./src/tiptoidl.py"
 Enter
 
 Sleep 1500ms
