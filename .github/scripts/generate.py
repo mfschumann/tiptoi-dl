@@ -34,11 +34,15 @@ class TipToiCatalog:
 
     def sanitize_title(self, product: dict) -> dict:
         product["title"] = re.sub(r"\s\d{5}.*$", "", product["title"])
-        product["title"] = product["title"].replace("tiptoi® Audiodatei ", "")
+        product["title"] = product["title"].replace("tiptoi®", "")
         product["title"] = product["title"].replace(
-            "tiptoi® Audioatei ", ""
+            "Audiodatei", ""
+        )  # ravensburger typo *shrug*
+        product["title"] = product["title"].replace(
+            "Audioatei", ""
         )  # ravensburger typo *shrug*
         product["title"] = product["title"].replace("\xa0", " ")
+        product["title"] = product["title"].strip()
         return product
 
     def get_product_numbers(self, product: dict) -> dict:
@@ -68,7 +72,7 @@ class TipToiCatalog:
             product_data["gme"] = link.get("href")
             product_data["title"] = product["title"]
             product_data["number"] = ""
-            if product["numbers"]: 
+            if product["numbers"]:
                 product_data["number"] = product["numbers"][n]
             if link.img:
                 product_data["img"] = self.get_product_image(link.img.get("src"))
