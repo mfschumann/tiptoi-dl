@@ -16,7 +16,7 @@ class TipToiCatalog:
         self.catalog = []
         self.products = []
         self.get_catalog()
-        for product in self.products:
+        for product in self.catalog:
             print(f"Get data for {product['title']}")
             self.products.append(self.get_product_data(product))
         self.persist_products()
