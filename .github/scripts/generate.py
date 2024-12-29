@@ -25,7 +25,7 @@ class TipToiCatalog:
         print(f"Status code: {r.status_code}")
         soup = BeautifulSoup(r.text, "html.parser")
         links = soup.find_all("a", class_="mt-listing-detailed-subpage-title")
-        print("Found {len(links)} links")
+        print(f"Found {len(links)} links")
         for link in links:
             self.catalog.append({"title": link.get("title"), "url": link.get("href")})
 

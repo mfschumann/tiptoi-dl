@@ -41,6 +41,9 @@ jobs:
         run: |
           uv run python .github/scripts/generate.py
 
+      - name: list files
+        run: ls -la
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
