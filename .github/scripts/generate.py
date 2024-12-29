@@ -43,6 +43,7 @@ class TipToiCatalog:
 
     def get_product_numbers(self, product: dict) -> dict:
         numbers = re.findall(r"\d{5}", product["title"])
+        print(f"Numbers {numbers}")
         if len(numbers) == 2:
             product["numbers"] = numbers
         else:
