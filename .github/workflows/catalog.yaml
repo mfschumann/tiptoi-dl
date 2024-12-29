@@ -5,9 +5,23 @@ on:
   schedule:
     - cron:  '0 0 * * *'
 
+permissions:
+  contents: read
+  pages: write      # to deploy to Pages
+  id-token: write   # to verify the deployment originates from an appropriate source
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# Deploy to the github-pages environment
+environment:
+  name: github-pages
+  url: ${{ steps.deployment.outputs.page_url }}
+
 jobs:
   generate-catalog:
-    name: python
+    name: generate catalog
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +38,14 @@ jobs:
 
       - name: Scrape products
         run: uv run python .github/scripts/generate.py
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './products.json'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 
+
+
