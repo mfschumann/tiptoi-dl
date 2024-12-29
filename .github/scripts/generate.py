@@ -43,11 +43,7 @@ class TipToiCatalog:
 
     def get_product_numbers(self, product: dict) -> dict:
         numbers = re.findall(r"\d{5}", product["title"])
-        print(f"Numbers {numbers}")
-        if len(numbers) == 2:
-            product["numbers"] = numbers
-        else:
-            product["numbers"] = [numbers]
+        product["numbers"] = numbers
         return product
 
     def get_product_image(self, img: str) -> str:
@@ -71,7 +67,9 @@ class TipToiCatalog:
         for n, link in enumerate(links):
             product_data["gme"] = link.get("href")
             product_data["title"] = product["title"]
-            product_data["number"] = product["numbers"][n]
+            product_data["number"] = ""
+            if product["numbers"]: 
+                product_data["number"] = product["numbers"][n]
             if link.img:
                 product_data["img"] = self.get_product_image(link.img.get("src"))
         return product_data
