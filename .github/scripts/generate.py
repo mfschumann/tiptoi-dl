@@ -70,7 +70,8 @@ class TipToiCatalog:
 
     def persist_products(self):
         print("Write json file")
-        with open(BASEPATH / "products.json", "w") as f:
+        (BASEPATH / "output").mkdir(exist_ok=True)
+        with open(BASEPATH / "output/products.json", "w") as f:
             json.dump(self.products, f)
 
 
