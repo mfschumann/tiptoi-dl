@@ -43,7 +43,10 @@ class TipToiCatalog:
 
     def get_product_numbers(self, product: dict) -> dict:
         numbers = re.findall(r"\d{5}", product["title"])
-        product["numbers"] = numbers
+        if len(numbers) == 2:
+            product["numbers"] = numbers
+        else:
+            product["numbers"] = [numbers]
         return product
 
     def get_product_image(self, img: str) -> str:
