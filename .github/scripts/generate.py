@@ -48,6 +48,7 @@ class TipToiCatalog:
     def get_product_data(self, product: dict) -> dict:
         product = self.get_product_numbers(product)
         product = self.sanitize_title(product)
+        print(f"Get product data for {product['title']}")
         product_data = {}
 
         r = requests.get(product["url"])
@@ -66,6 +67,7 @@ class TipToiCatalog:
         return product_data
 
     def persist_products(self):
+        print("Write json file")
         with open(BASEPATH / "products.json", "w") as f:
             json.dump(self.products, f)
 

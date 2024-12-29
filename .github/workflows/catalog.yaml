@@ -38,7 +38,8 @@ jobs:
         run: uv sync --all-extras --dev
 
       - name: Scrape products
-        run: uv run python .github/scripts/generate.py
+        run: |
+          uv run python .github/scripts/generate.py
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
