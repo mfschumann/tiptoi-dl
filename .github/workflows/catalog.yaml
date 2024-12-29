@@ -14,15 +14,16 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-# Deploy to the github-pages environment
-environment:
-  name: github-pages
-  url: ${{ steps.deployment.outputs.page_url }}
 
 jobs:
   generate-catalog:
     name: generate catalog
     runs-on: ubuntu-latest
+    
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - uses: actions/checkout@v4
