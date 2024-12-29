@@ -1,5 +1,6 @@
 import json
 import re
+import time
 from pathlib import Path
 
 import requests
@@ -16,9 +17,9 @@ class TipToiCatalog:
         self.catalog = []
         self.products = []
         self.get_catalog()
-        for product in self.catalog:
-            print(f"Get data for {product['title']}")
+        for n, product in enumerate(self.catalog):
             self.products.append(self.get_product_data(product))
+            time.sleep(1)
         self.persist_products()
 
     def get_catalog(self):
