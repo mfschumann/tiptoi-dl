@@ -3,7 +3,7 @@ name: Generate TipToi catalog
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '30 18 * * *'
+    - cron:  '10 09 * * *'
 
 permissions:
   contents: read
