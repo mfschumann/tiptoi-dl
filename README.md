@@ -18,9 +18,9 @@ So I decided to build this little CLI that allows me to download and copy the au
 1. Install with `pip install tiptoi-dl --break-system-packages`
 2. Simply run `tiptoi-dl`
 
-[!NOTE]
-The `--break-system-packages` is necessary on most systems in order to allow installing packages at system level with pip at all.
-If you prefer a `venv`, check out the next section on how to use `uv` and a `venv`.
+> [!NOTE]
+> The `--break-system-packages` is necessary on most systems in order to allow installing packages at system level with pip at all.
+> If you prefer a `venv`, check out the next section on how to use `uv` and a `venv`.
 
 ### Without installation
 
