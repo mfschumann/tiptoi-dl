@@ -66,9 +66,11 @@ class TipToiCatalog:
         product["numbers"] = numbers
         return product
 
-    def get_product_image(self, img: str) -> str:
-        url = img.split("?")[0]
-        return url
+    def get_product_image(self, img: str | None) -> str:
+        if img:
+            url = img.split("?")[0]
+            return url
+        return ""
 
     def get_product_data(self, product: dict) -> dict:
         product = self.get_product_numbers(product)
