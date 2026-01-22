@@ -60,7 +60,7 @@ class TipToiDL:
 
     def search(self, searchterm: str):
         for item in self.products:
-            if searchterm.lower() in item["title"].lower():
+            if searchterm.lower() in item.get("title", "").lower():
                 self.results.append(item)
 
     def download(self, url: str):
