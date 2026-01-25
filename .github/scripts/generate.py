@@ -72,11 +72,11 @@ class TipToiCatalog:
             return url
         return ""
 
-    def get_product_data(self, product: dict) -> dict:
+    def get_product_data(self, product: dict) -> list[dict]:
         product = self.get_product_numbers(product)
         product = self.sanitize_title(product)
         LOGGER.info(f"Get product data for {product['title']}")
-        product_data = {}
+        product_data = []
 
         r = requests.get(product["url"], timeout=10)
         LOGGER.info(f"Status code: {r.status_code}")
@@ -88,19 +88,21 @@ class TipToiCatalog:
         )
 
         for n, link in enumerate(links):
-            product_data["gme"] = link.get("href")
-            product_data["title"] = product["title"]
-            product_data["number"] = ""
+            data = {}
+            data["gme"] = link.get("href")
+            data["title"] = product["title"]
+            data["number"] = ""
             if product["numbers"]:
                 try:
-                    product_data["number"] = product["numbers"][n]
+                    data["number"] = product["numbers"][n]
                 except IndexError:
                     LOGGER.warning(
                         "Inconsitent data for %s, catalog maybe not 100%% complete",
-                        product_data["title"],
+                        data["title"],
                     )
             if link.img:
-                product_data["img"] = self.get_product_image(link.img.get("src"))
+                data["img"] = self.get_product_image(link.img.get("src"))
+            product_data.append(data)
         return product_data
 
     def persist_products(self):
