@@ -41,7 +41,7 @@ class TipToiDL:
                 continue
             print(f"\n  Found {len(self.results)} results!\n")
             for n, r in enumerate(self.results, 1):
-                print(f"  [{n}] {r["title"]}")
+                print(f"  [{n}] {r["title"]} ({r["number"]})")
             print("\n")
             s = input("Select item by entering number, q to quit: ")
             if s == "q":
@@ -54,13 +54,14 @@ class TipToiDL:
             if n < 0 or n > len(self.results):
                 print("\n  Not a valid selection, quit ...")
                 break
-            print(f"\n  Your selection: {self.results[n-1]['title']}")
+            print(f"\n  Your selection: {self.results[n-1]['title']} ({self.results[n-1]['number']})")
             self.download(self.results[n-1]["gme"])
 
 
     def search(self, searchterm: str):
         for item in self.products:
-            if searchterm.lower() in item.get("title", "").lower():
+            if searchterm.lower() in item.get("title", "").lower() or \
+              searchterm in item.get("number", ""):
                 self.results.append(item)
 
     def download(self, url: str):
