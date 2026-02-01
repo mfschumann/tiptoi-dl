@@ -26,7 +26,7 @@ class TipToiCatalog:
         LOGGER.info("Start data scraping")
         self.get_catalog(target)
         for product in self.catalog:
-            self.products.append(self.get_product_data(product))
+            self.products.extend(self.get_product_data(product))
             time.sleep(0.1)
         self.persist_products()
 
