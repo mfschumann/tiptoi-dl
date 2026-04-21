@@ -1,3 +1,5 @@
+        dt = datetime.fromisoformat(date.replace("Z", "+00:00")0
+        unix_timestamp = int(dt.timestamp())
 # TipToi-dl
 
 [![Generate TipToi catalog](https://github.com/Bouni/tiptoi-dl/actions/workflows/catalog.yaml/badge.svg)](https://github.com/Bouni/tiptoi-dl/actions/workflows/catalog.yaml)
@@ -15,18 +17,13 @@ So I decided to build this little CLI that allows me to download and copy the au
 
 ### With installation
 
-1. Install with `pip install tiptoi-dl --break-system-packages`
-2. Simply run `tiptoi-dl`
+1. Install uv if you have not already (see https://docs.astral.sh/uv/getting-started/installation/)
+2. Run `uv tool install git+https://github.com/Bouni/tiptoi-dl.git`
+3. Run the script: `tiptoi-dl`
 
 > [!NOTE]
-> The `--break-system-packages` is necessary on most systems in order to allow installing packages at system level with pip at all.
-> If you prefer a `venv`, check out the next section on how to use `uv` and a `venv`.
-
-### Without installation
-
-1. Install uv if you have not already (see https://docs.astral.sh/uv/getting-started/installation/)
-2. Sync the project: `uv sync --frozen`
-3. Run the script: `uv run src/tiptoi-dl`
+> If the command is not found, the path is most likely not in your PATH. 
+> run `uv tool update-shell` to fix that
 
 ## Usage
 
