@@ -1,5 +1,3 @@
-        dt = datetime.fromisoformat(date.replace("Z", "+00:00")0
-        unix_timestamp = int(dt.timestamp())
 # TipToi-dl
 
 [![Generate TipToi catalog](https://github.com/Bouni/tiptoi-dl/actions/workflows/catalog.yaml/badge.svg)](https://github.com/Bouni/tiptoi-dl/actions/workflows/catalog.yaml)
