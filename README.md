@@ -1,3 +1,19 @@
+[project0
+name = "tiptoi-dl"
+version = "0.1.0"
+description = "A TipToi Download helper"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "beautifulsoup4>=4.14.2",
+    "coloredlogs>=15.0.1",
+    "psutil>=7.1.0",
+    "requests>=2.32.5",
+    "tqdm>=4.67.1",
+]
+
+[project.scripts]
+tiptoi-dl = "tiptoidl:main"
 # TipToi-dl
 
 [![Generate TipToi catalog](https://github.com/Bouni/tiptoi-dl/actions/workflows/catalog.yaml/badge.svg)](https://github.com/Bouni/tiptoi-dl/actions/workflows/catalog.yaml)
@@ -13,10 +29,8 @@ So I decided to build this little CLI that allows me to download and copy the au
 
 ## Setup
 
-### With installation
-
 1. Install uv if you have not already (see https://docs.astral.sh/uv/getting-started/installation/)
-2. Run `uv tool install git+https://github.com/Bouni/tiptoi-dl.git`
+2. Run `uv tool install tiptoi-dl` (or `uv tool install git+https://github.com/Bouni/tiptoi-dl.git` for the main branch)
 3. Run the script: `tiptoi-dl`
 
 > [!NOTE]
