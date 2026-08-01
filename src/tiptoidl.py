@@ -47,7 +47,10 @@ class TipToiDL:
             if s == "q":
                 break
             try:
-                n = int(s)
+                if len(self.results) == 1 and s == "":
+                    n = 1
+                else:
+                    n = int(s)
             except ValueError:
                 print("\n  Not a vaild selection, quit ...")
                 sys.exit(1)
