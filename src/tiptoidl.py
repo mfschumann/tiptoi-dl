@@ -43,17 +43,19 @@ class TipToiDL:
             for n, r in enumerate(self.results, 1):
                 print(f"  [{n}] {r["title"]} ({r["number"]})")
             print("\n")
-            s = input("Select item by entering number, q to quit: ")
+            s = input("Select item by entering number, q to quit, s to search again: ")
             if s == "q":
                 break
-            try:
-                if len(self.results) == 1 and s == "":
-                    n = 1
-                else:
+            elif s == "s":
+                continue
+            elif s == "" and len(self.results) == 1:
+                n = 1
+            else:
+                try:
                     n = int(s)
-            except ValueError:
-                print("\n  Not a vaild selection, quit ...")
-                sys.exit(1)
+                except ValueError:
+                    print("\n  Not a valid selection, quit ...")
+                    sys.exit(1)
             if n < 0 or n > len(self.results):
                 print("\n  Not a valid selection, quit ...")
                 break
